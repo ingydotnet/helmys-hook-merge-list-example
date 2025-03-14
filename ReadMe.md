@@ -114,3 +114,52 @@ $ ys list-merge-test.ys values/*
 - name: MYVAR3
   value: add_this
 ```
+
+
+## Hosting Hooks Online
+
+The example above requires a hook file, a merge library file and the values
+override file.
+
+These files can be hosted on the web if you want to share or reuse them in
+various contexts.
+
+Here's an example of hosting them simply as GitHub gist raw files:
+
+```
+$ HELMYS_HOOKS=https://gist.githubusercontent.com/ingydotnet/74e80ffe948cce75357a12d0b2a9855f/raw/2f6438dbdb8936e20f96acf8b28317da1a4d771b/list-merge-hook.ys VALUES_FILE=merge-env.yaml helm template cronjob --post-renderer=helmys
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: release-name-cronjob
+  labels:
+    app: cronjob
+    chart: cronjob-0.1.0
+    release: release-name
+    heritage: Helm
+spec:
+  schedule: 0 11 * * *
+  startingDeadlineSeconds: null
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          name: release-name-cronjob
+        spec:
+          restartPolicy: Never
+          imagePullSecrets:
+          - name: quay-sts
+          containers:
+          - name: release-name-cronjob
+            imagePullPolicy: Always
+            image: 'nginx:'
+            args:
+            - npm
+            - start
+            - foo_job
+            env:
+            - name: FOO
+              value: bar
+            - name: BAR
+              value: foo
+```
