@@ -1,0 +1,4 @@
+- name: MYVAR1
+  value: override_this_value
+- name: MYVAR3
+  value: add_this

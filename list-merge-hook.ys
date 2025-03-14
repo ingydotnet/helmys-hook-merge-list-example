@@ -1,0 +1,20 @@
+!YS-v0
+
+load: 'list-merge.ys'
+
+defn helmys-hook-out(o):
+  values-file =:
+    ENV.VALUES_FILE ||:
+      die: "$FILE requires VALUES_FILE var"
+
+  more =: values-file:yaml/load-file.cronjob.env
+
+  when o.kind == 'CronJob':
+    walk/prewalk _ o:
+      fn(o):
+        node =: o.env
+        if node:
+          then:
+            assoc-in o ['env']:
+              list-merge 'name': node more
+          else: o

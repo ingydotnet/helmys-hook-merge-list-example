@@ -1,0 +1,4 @@
+cronjob:
+  env:
+  - name: BAR
+    value: foo

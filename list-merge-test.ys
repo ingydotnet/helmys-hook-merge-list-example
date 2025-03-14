@@ -1,0 +1,9 @@
+!YS-v0
+
+load: 'list-merge.ys'
+
+defn main(file1 file2):
+  say: !:yaml/dump
+    list-merge 'name':
+      load: file1
+      load: file2
