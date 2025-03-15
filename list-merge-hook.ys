@@ -1,6 +1,6 @@
 !YS-v0
 
-load: 'list-merge.ys'
+load: gh-url('ingydotnet/helmys-hook-merge-list-example/main/list-merge.ys')
 
 defn helmys-hook-out(o):
   values-file =:
