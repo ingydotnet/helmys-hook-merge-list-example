@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+export HELMYS_HOOKS=https://raw.githubusercontent.com/ingydotnet/helmys-hook-merge-list-example/refs/heads/main/list-merge-hook.ys
+
+helmys
