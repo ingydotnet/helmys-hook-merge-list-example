@@ -1,5 +1,7 @@
 !YS-v0
 
+ns: list-merge
+
 defn list-merge(key list1 list2): !:vals
   reduce _ omap() list1.concat(list2):
     fn(o elem): o.assoc(elem.$key elem)
