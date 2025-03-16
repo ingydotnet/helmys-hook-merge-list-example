@@ -3,6 +3,7 @@
 use:
   list-merge:
     :url 'github:ingydotnet/helmys-hook-merge-list-example/test/list-merge.ys'
+    :get list-merge
 
 defn helmys-hook-out(o):
   values-file =:
