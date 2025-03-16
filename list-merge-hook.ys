@@ -1,8 +1,8 @@
 !YS-v0
 
-load:
-  url/github-raw:
-    'ingydotnet/helmys-hook-merge-list-example/main/list-merge.ys'
+use:
+  list-merge:
+    :url 'github:ingydotnet/helmys-hook-merge-list-example/main/list-merge.ys'
 
 defn helmys-hook-out(o):
   values-file =:
