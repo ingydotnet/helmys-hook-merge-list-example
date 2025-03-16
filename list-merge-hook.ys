@@ -10,7 +10,7 @@ defn helmys-hook-out(o):
     ENV.VALUES_FILE ||:
       die: "$FILE requires VALUES_FILE var"
 
-  extra-values =: values-file:yaml/load-file.cronjob.env
+  extra-values =: values-file:read:yaml/load.cronjob.env
 
   when o.kind == 'CronJob':
     walk/prewalk _ o:
