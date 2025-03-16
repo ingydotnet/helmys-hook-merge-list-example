@@ -144,10 +144,14 @@ $ ys list-merge-test.ys values/*
 ```
 
 
-## Hosting Hooks Online
+## Alternative Setups
 
-The example above requires a hook file, a merge library file and the values
-override file.
+There are several ways to set up this kind of post-renderer.
+
+
+### Hosting HelmYS Hooks Online
+
+The example above in "Synopsis" used a local HelmYS hook file.
 
 These files can be hosted on the web if you want to share or reuse them in
 various contexts.
@@ -196,7 +200,7 @@ spec:
 ```
 
 
-## Making Your Own post-renderer File
+### Make Your Own post-renderer File with HelmYS
 
 You can make your own post-renderer file with the above info:
 

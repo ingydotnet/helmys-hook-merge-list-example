@@ -9,14 +9,13 @@ defn helmys-hook-out(o):
     ENV.VALUES_FILE ||:
       die: "$FILE requires VALUES_FILE var"
 
-  more =: values-file:yaml/load-file.cronjob.env
+  extra-values =: values-file:yaml/load-file.cronjob.env
 
   when o.kind == 'CronJob':
     walk/prewalk _ o:
       fn(o):
         node =: o.env
         if node:
-          then:
-            assoc-in o ['env']:
-              list-merge 'name': node more
+          assoc-in o ['env']:
+            list-merge 'name': node extra-values
           else: o
